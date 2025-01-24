@@ -7,7 +7,15 @@ class Bender(Enum):
     FIRE_BENDER = "fire"
 
 class TextNode:
-    def __init(self, text, text_type, url):
+    def __init__(self, text, text_type, url):
         self.text = text
         self.text_type = text_type
         self.url = url
+    
+    def __eq__(self, object):
+        print(self.__dict__)
+        print(object.__dict__)
+        return self.__dict__ == object.__dict__
+    
+    def __repr__(self):
+        return f'TextNode({self.text}, {self.text_type}, {self.url})'
