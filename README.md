@@ -11,7 +11,7 @@ A simple static site generator built with Python. This project converts Markdown
 
     Clone the repository:
 
-git clone https://github.com/karolsykala/static-site-generator-python.git
+git clone https://github.com/karolsykala/static_site_generator_python.git
 
 Install dependencies:
 
