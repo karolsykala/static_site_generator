@@ -14,14 +14,10 @@ class HTMLNode:
     def __repr__(self):
         return f'{self.tag}\n{self.value}\n{self.children}\n{self.props}'
 
-seks = HTMLNode('uwu', 'nya', 'arf', {"sex": "yes"})
-
-
-print(seks.__repr__())
 
 class LeafNode(HTMLNode):
-    def __init__(self, tag, value):
-        super().__init__(tag, value, children=None)
+    def __init__(self, tag, value, props=None):
+        super().__init__(tag, value, children=None, props=props)
     
     def to_html(self):
         if not self.value:
@@ -34,3 +30,17 @@ class LeafNode(HTMLNode):
                 return f'<{self.tag} {props_str}>{self.value}</{self.tag}>'
             else:
                 return f'<{self.tag}>{self.value}</{self.tag}>'
+            
+class ParentNode(HTMLNode):
+    def __init__(self, tag, children, props=None):
+        super().__init__(tag, children=children, props=props)
+
+    def to_html(self):
+        if not self.tag or self.tag.strip() == "":
+            raise ValueError("Lacks Tag")
+        elif not self.children:
+            raise ValueError("lacks Children")
+        else:
+            childHTML = "".join(child.to_html() for child in self.children)
+            return f'<{self.tag}>{childHTML}</{self.tag}>'
+        
