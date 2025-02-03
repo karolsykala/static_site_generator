@@ -13,10 +13,6 @@ A simple static site generator built with Python. This project converts Markdown
 
 git clone https://github.com/karolsykala/static_site_generator.git
 
-Install dependencies:
-
-    pip install -r requirements.txt
-
 Usage
 
   1. Place your Markdown files in the content directory.
