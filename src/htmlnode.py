@@ -43,7 +43,7 @@ class LeafNode(HTMLNode):
 
 
 leafCat = LeafNode("p", "kitty cat uwu", props={"href": "www.google.com"})
-
+anotherLeafCat = LeafNode("a", "Click me!", {"href": "https://www.google.com"})
 katze = HTMLNode(
     "uwu",
     "daddy",
@@ -64,3 +64,4 @@ print("===")
 print(leafCat.to_html())
 print("===")
 print(leafCat.children)
+print(anotherLeafCat.to_html())
