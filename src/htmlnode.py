@@ -41,6 +41,24 @@ class LeafNode(HTMLNode):
 
         return f"<{self.tag}{formattedProps}>{self.value}</{self.tag}>"
 
+class ParentNode(HTMLNode):
+    def __init__(self, tag, children, props=None):
+        super().__init__(tag=tag, children=children, props=props)
+
+    def to_html(self):
+        if (self.tag == None):
+            raise ValueError("Tag is needed!")
+        if (self.children == None):
+            raise ValueError("Chidren without expected values")
+        
+        formattedProps = ""
+        if self.props:
+            for key, value in self.props.items():
+                formattedProps += f' {key}="{value}"'
+        convertedChildren = ""
+        for child in self.children:
+            convertedChildren += child.to_html()
+        return f"<{self.tag}{formattedProps}>{convertedChildren}</{self.tag}>"
 
 leafCat = LeafNode("p", "kitty cat uwu", props={"href": "www.google.com"})
 anotherLeafCat = LeafNode("a", "Click me!", {"href": "https://www.google.com"})
